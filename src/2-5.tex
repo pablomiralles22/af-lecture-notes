@@ -1,0 +1,137 @@
+\subsection{Teorema espectral para operadores compactos autoadjuntos.}
+
+\begin{proposition}
+  \label{prop:autoadj-real-eigenvalues}
+  Si $T=T^*$ y  $Tv=\lambda v$ con $v\neq 0$, entonces $\lambda\in \mathbb{R}$.
+\end{proposition}
+
+\begin{proof}
+  $\lambda \dotp{v}{v} =
+  \dotp{Tv}{v}=\dotp{v}{T^*v}=\dotp{v}{Tv}=\overline{\lambda}\dotp{v}{v}$. Como
+  $v\neq 0$ se da $\lambda=\overline{\lambda}$.
+\end{proof}
+
+\begin{proposition}
+  \label{prop:eigenspaces-finite-dim}
+  Si $T$ es compacto, $\forall \lambda\neq 0$ se tiene que $Ker(T-\lambda Id)$
+  es de dimensión finita.
+\end{proposition}
+
+\begin{proof}
+  Si no es de dimensión finita, podemos tomar $(\phi_n)_n$ ortonormal e infinita
+  en $Ker(T-\lambda Id)$ (espacio cerrado en un Hilbert, pues es preimagen de un
+  $\{0\}$ por una función continua).
+
+  Como $T$ es compacto, $(T\phi_n)_n$ debe tener una subsucesión convergente,
+  pero como $T\phi_n=\lambda \phi_n$ $\forall n\in \mathbb{N}$,
+  $\|T\phi_{n_j}-T\phi_{n_k}\|=|\lambda|\|\phi_{n_j}-\phi_{n_k}\|=\lambda\sqrt{2}
+  $, así que ninguna subsucesión es de Cauchy, y no pueden ser convergentes.
+\end{proof}
+
+\begin{proposition}
+  \label{prop:norm-eigenval}
+  Si $T$ es un operador compacto y autoadjunto, entonces o bien $\|T\|$ o bien
+  $-\|T\|$ es un valor propio.
+\end{proposition}
+
+\begin{proof}
+  Sabemos que $\|T\|=\sup \{|\dotp{Tf}{f}|:\|f\|\le 1\}$ por ser $T=T^*$. La
+  idea es encontrar un máximo.
+
+  Tomo $(f_n)_n$ con $\|f_n\|\le 1$ y $\dotp{Tf_n}{f_n}\to \lambda$ para
+  $|\lambda|=\|T\|$. Como $T$ es compacto, $(Tf_n)_n$ tiene una subsucesión
+  $(Tf_{n_k})_k$ convergente en $H$, y llamo al límite $g\in H$.
+
+  Afirmo entonces que $g$ es vector propio de $T$ con valor propio $\lambda$, lo
+  que terminaría la prueba.
+  \[
+  0\le \|Tf_{n_k}-\lambda f_{n_k}\|^2 =
+  \dotp{Tf_{n_k}}{Tf_{n_k}}-2\lambda\dotp{f_{n_k}}{Tf_{n_k}}+\lambda^2
+  \dotp{f_{n_k}}{f_{n_k}}=
+  \] 
+  \[
+  \|Tf_{n_k}\|^2-2\lambda\dotp{Tf_{n_k}}{f_{n_k}} + \lambda^2
+  \underbrace{\|f_{n_k}\|^2}_{1}
+  .\] 
+
+  Tomando límites, por la continuidad de la norma:
+
+  \[
+  0\le \|g-\lambda \lim_{k \to \infty} f_{n_k}\|^2 \le 
+  \|g\|^2-2\lambda\cdot \lambda + \lambda^2=0
+  .\] 
+  
+  Se tiene entonces que $g=\lim_{k \to \infty} \lambda f_{n_k}$, y por lo tanto
+
+  \[
+  Tg = T(\lim_{k \to \infty} \lambda f_{n_k})=\lambda T(\lim_{k \to \infty}
+  f_{n_k})=\lambda g
+  ,\] 
+
+  quedan demostrada la afirmación.
+
+\end{proof}
+
+\begin{remark}
+  En $l^2$, el operador $T$ que actua $(\psi_n)_n\to (0,\psi_1,\psi_2,\ldots)$
+  no es invertible (no es sobreyectiva), esto es, $T-0\cdot Id$ no es
+  invertible, y sin embargo $0$ no es valor propio. Por eso el concepto de
+  espectro es más general que el de valores propios, y por eso el teorema que
+  dice que el espectro no es vacío no nos sirve para demostrar que existe un
+  valor propio.
+\end{remark}
+
+\begin{theorem}[Hilbert-Schmidt]
+  Sea $H$ espacio de Hilbert separable, $T:H\to H$ un operador compacto y
+  autoadjunto. Entonces existe una base hilbertiana $\{v_k\}_{k=1}^\infty$ de $H$ 
+  con $Tv_k=\lambda_k v_k$ para $\lambda_k\in \mathbb{R}$ $\forall k=1,2,\ldots$ y
+  $\lim_{k \to \infty} \lambda_k=0$.
+\end{theorem}
+
+\begin{proof}
+  Llamo $S=\overline{span}\{v:v\text{ es vector propio de } T\}\subset H$.
+  
+  Afirmo que si $Ker T=\{0\} $ entonces $S=H$. Para demostrarlo, supongamos lo
+  contrario, esto es, $S\neq H=S \oplus S^\bot$. $T(S)\subset S$
+  claramente, así que si $g\in S^\bot$ entonces $\dotp{Tg}{f}=\dotp{g}{Tf}=0$ $\forall
+  f\in S$, y por lo tanto $Tg\in S^\bot$. Puedo entonces considerar el operador
+   $T|_{S^\bot}$ tiene un vector propio $v\in S^\bot$
+   (\ref{prop:norm-eigenval}), que también lo será de $T$,
+   contradicción\footnote{Creo que no se usa que sea inyectivo y que esto
+   termina la prueba en el caso general.}.
+  
+  Si además $Tv_k=\lambda_k$ para $k=1,2,\ldots$ para $\{v_k\}_{k=1}^\infty $ 
+  base hilbertiana, veamos que $\lim_{k \to \infty} \lambda_k=0$. Si no fuese
+  así, existiría una subsucesión $(\lambda_{k_i})_i$ con $|\lambda_{k_i}|\ge
+  \varepsilon$ $\forall i \in \mathbb{N}$. Se tiene entonces:
+
+  \[
+  \|\lambda_{k_i}v_{k_i}-\lambda_{k_j}v_{k_j}\|
+  =\lambda_{k_i}^2+\lambda_{k_j}^2>2\cdot \varepsilon
+  ,\] 
+
+  y la sucesión $(TV_{k})_k$ no puede tener subsucesiones convergentes, que
+  contradice que el operador sea compacto.
+
+  Falta ver el caso no inyectivo. Si $KerT\neq 0$, como $H=KerT \oplus
+  (KerT)^\bot$ y $KerT$ es el espacio propio asociado al valor propio $0$,
+  aplicando el caso inyectivo a $T|_{(KerT)^\bot}$ ya lo tenemos, solo hay que
+  ver que $Tg\in (KerT)^\bot$ para cada $g\in (KerT)^\bot$. Pero si $x\in KerT$,
+  $\dotp{x}{Tg}=\dotp{Tx}{g}=\dotp{0}{g}=0$.
+\end{proof}
+
+\begin{remark}
+  En ese caso $Tx=\sum_{n=1}^{\infty} \lambda_k\dotp{x}{v_k}v_k$ por ser el
+  operador continuo.
+\end{remark}
+
+\begin{remark}
+  $H=\bigoplus_{i=1}^\infty Ker(T-\lambda_i Id)$ con $\lambda_i\to 0$.
+\end{remark}
+
+\begin{definition}
+  Un operador $T$ es normal si $T^*T=TT^*$.
+\end{definition}
+
+El teorema es cierto también para operadores normales, no hace falta que sean
+autoadjuntos.
