@@ -1,9 +1,7 @@
 \subsection{Teorema espectral para operadores compactos autoadjuntos.}
 
 \begin{proposition}
-  \label{prop:autoadj-real-eigenvalues}
-  Si $T=T^*$ y  $Tv=\lambda v$ con $v\neq 0$, entonces $\lambda\in \mathbb{R}$.
-\end{proposition}
+  \label{prop:autoadj-real-eigenvalues} Si $T=T^*$ y  $Tv=\lambda v$ con $v\neq 0$, entonces $\lambda\in \mathbb{R}$. \end{proposition}
 
 \begin{proof}
   $\lambda \dotp{v}{v} =
@@ -78,8 +76,13 @@
   invertible, y sin embargo $0$ no es valor propio. Por eso el concepto de
   espectro es más general que el de valores propios, y por eso el teorema que
   dice que el espectro no es vacío no nos sirve para demostrar que existe un
-  valor propio.
+  valor propio. En este contexto se introduce la siguiente notación.
 \end{remark}
+
+\begin{definition}
+  Dado $T$ operador, llamamos $\sigma_p(T)$ al conjunto de los valores propios
+  de $T$.
+\end{definition}
 
 \begin{theorem}[Hilbert-Schmidt]
   \label{th:hilbert-schmidt}
@@ -136,3 +139,103 @@
 
 El teorema es cierto también para operadores normales, no hace falta que sean
 autoadjuntos.
+
+\begin{definition}
+  Sea $T:H\to H$ operador, con $H$ Hilbert, y sean $b\in H$ y $\lambda\in
+  \mathbb{K}-\{0\} $. Queremos encontrar $u\in H$ tal que $\lambda u-Tu=b$ (P).
+  Llamamos problema homogéneo (P$_h$) al caso $b=0$.
+\end{definition}
+
+\begin{theorem}[Alternativa de Fredholm]
+  \label{th:fredholm}
+  Dado $T$ operador compacto y autoadjunto en un espacio $H$ de Hilbert
+  separable, con base ortonormal $\{e_k\}_1^\infty$, entonces:
+  \begin{enumerate}
+    \item Si $\lambda\not\in \sigma_p(T) \cup \{0\} $, el problema (P) tiene una
+      única solución dada por:
+       \[
+      u=\lambda^{-1}\left( b+ \sum_{n=1}^{\infty}
+      \frac{\lambda_n}{\lambda-\lambda_n}\dotp{b}{e_n}e_n \right) 
+      .\] 
+    \item Si $\lambda \in \sigma_p(T)\setminus \{0\}$, entonces $(P)$ tiene
+      solución si y solo si  $\dotp{b}{v}=0$ $\forall v$ solución de
+      (P$_{\text{h}}$). En ese caso, si $\lambda=\lambda_i$, entonces las
+      soluciones vienen dadas por:
+       \[
+      u=z+\lambda^{-1}\left(b+ \sum_{n=1,n\neq i}^{\infty}
+      \frac{\lambda_n}{\lambda-\lambda_n}\dotp{b}{e_n}e_n \right) 
+      ,\] 
+      para $z$ solución de (P$_h$).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}\hfill
+  \begin{enumerate}
+    \item
+      Por Hilbert-Schmidt (\ref{th:hilbert-schmidt}), existe una base
+      $\{e_n\}_1^\infty$ base hilbertiana con $Te_n=\lambda_n e_n$ tal que
+      $|\lambda_1|\ge |\lambda_2|\ge \ldots \to 0$.
+
+
+      Supongamos que $u$ es solución de (P), observamos que
+      \begin{align*}
+        (\lambda-\lambda_n)\dotp{u}{e_n} &= \dotp{\lambda u}{e_n} - \dotp{u}{\bar{\lambda_n} e_n}\\
+                                         &= \dotp{\lambda u}{e_n} - \dotp{u}{\lambda_n e_n}\\
+                                         &= \dotp{\lambda Id u}{e_n} - \dotp{u}{Te_n}\\
+                                         &= \dotp{\lambda Id u}{e_n} - \dotp{Tu}{e_n} \\
+                                         &= \dotp{(\lambda Id - T) u}{e_n} \\
+                                         &= \dotp{b}{e_n}
+      .\end{align*}
+
+      Como $\lambda\neq \lambda_n$ $\forall n\in N$:
+
+      \[
+      u=\lambda^{-1}(b+Tu)=
+      \lambda^{-1}\left(b+\sum_{n=1}^{\infty} \lambda_n\dotp{u}{e_n}e_n\right)=
+      \lambda^{-1}\left(b+\sum_{n=1}^{\infty}
+      \frac{\lambda_n}{\lambda-\lambda_n}\dotp{b}{e_n}e_n\right)
+      .\] 
+
+      Considero $\alpha_n=\frac{\lambda_n}{\lambda-\lambda_n}$, y estudiemos la
+      serie $\sum_{n=1}^{\infty} |\alpha_n|^2|\dotp{b}{e_n}|^2$. Como los
+      $\lambda_n\to 0\neq \lambda$, $|\alpha_n|<C\in \mathbb{R}$ $\forall n\in
+      \mathbb{N}$, y por lo tanto la serie queda acotada por $C^2\|b\|^2$ y
+      converge, y dicho $u\in H$ existe. Además, por continuidad de $T$:
+
+      \begin{align*}
+        Tu &= \lambda^{-1}\left( Tb+\sum_{n=1}^{\infty} \alpha_n \lambda_n \dotp{b}{e_n}e_n \right)
+           = \lambda^{-1}\left( \sum_{n=1}^{\infty} \lambda_n \dotp{b}{e_n}e_n + \sum_{n=1}^{\infty} \alpha_n \lambda_n \dotp{b}{e_n}e_n \right)\\
+           &= \left( \sum_{n=1}^{\infty} \lambda^{-1}\lambda_n(1+\alpha_n) \dotp{b}{e_n}e_n \right)
+           = \left( \sum_{n=1}^{\infty} \lambda^{-1}\lambda_n \frac{\lambda}{\lambda-\lambda_n} \dotp{b}{e_n}e_n \right)\\
+           &= \left( \sum_{n=1}^{\infty} \frac{\lambda_n}{\lambda-\lambda_n} \dotp{b}{e_n}e_n \right)
+      .\end{align*}
+
+      Es obvio entonces que $u$ cumple la ecuación.
+
+    \item Para la necesidad, sean $u,v$ soluciones de (P),(P$_h$)
+      respectivamente. Como $\lambda\in \sigma_p(T)\subset \mathbb{R}$, $(\lambda
+      Id-T)$ es autoadjunto, y por lo tanto:
+      \[
+      \dotp{b}{v}=
+      \dotp{\lambda u - Tu}{v}=
+      \dotp{\left( \lambda Id - T \right) u}{v}=
+      \dotp{u}{\left( \lambda Id - T \right) v}=
+      0
+      .\] 
+
+      Para la suficiencia, es evidente que si a una solución le sumas otra de la
+      homogénea sigue siendo solución, así que bastará ver que la expresión con
+      $z=0$ es solución. El argumento de convergencia y la comprobación de la
+      igualdad se hacen exactamente igual que en el caso anterior, salvo por el
+      siguiente detalle. $e_i$ es solución de la homogénea, así que al calcular
+      $Tb$, el coeficiente i-ésimo
+      $\dotp{Tb}{e_i}=\dotp{b}{Te_i}=\lambda_i\dotp{b}{e_i}=0$ no aparece.
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  Fijado $\lambda\in \mathbb{K}-\{0\}$, si (P) tiene a lo más una solución
+  $\forall  b\in H$, entonces se verifica que el operador lineal y continuo
+  $(\lambda Id-T)^{-1}:H\to H$ queda bien definido. Además, la ecuación (P)
+  tiene como solución $u=(\lambda Id-T)^{-1} b$.
+\end{corollary}
