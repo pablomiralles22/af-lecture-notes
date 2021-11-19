@@ -1,0 +1,191 @@
+\subsection{Operadores compactos.}
+
+\begin{definition}
+  Un operador es compacto si la imagen de la bola unidad es relativamente
+  compacta.
+\end{definition}
+
+\begin{remark}
+  En espacios métricos, y en concreto en espacios normados, la compacidad
+  relativa equivale a que cualquier sucesión contenga una subsucesión
+  convergente.
+\end{remark}
+
+\begin{lemma}
+  \label{le:finite-range-adjoint}
+  Si $K:H\to H$ es un operador de rango finito en $H$ Hilbert, entonces su
+  adjunto es de rango finito (p. 162, \cite{cascales2012}).
+\end{lemma}
+\begin{proof}
+  Si el rango de $K$ es $span\{v_1,\ldots,v_n\}$, con los $v_i$ ortonormales, y
+  $P_i$ es la proyección de $H$ en $span \{v_i\}$, entonces $P_i\circ K$ son
+  formas lineales continuas, $\exists ! u_i$ tal que $P_i\circ K x =
+  \dotp{x}{u_i}$ para cada $x\in H$. Se tiene entonces:
+
+   \[
+  Kx = \sum_{i=1}^{n} \dotp{x}{u_i} v_i
+  \] 
+  para cada $x\in H$. Pero entonces para $x,y\in H$ arbitrarios:
+
+  \[
+  \dotp{x}{K^*y}=\dotp{Kx}{y}=\sum_{i=1}^{n} \dotp{x}{u_i}\dotp{v_i}{y}=
+  \dotp{x}{\sum_{i=1}^{n} \dotp{y}{v_i}u_i}
+  ,\] 
+  y $K^*y=\sum_{i=1}^{n} \dotp{y}{v_i}u_i$ para cada $y\in H$, tiene rango
+  finito.
+\end{proof}
+
+\begin{theorem}
+  \label{th:operator-compactness-properties}
+  Sea $H$ Hilbert separable, $T:H\to H$ lineal y continua, entonces:
+
+  \begin{enumerate}
+    \item $S:H\to H$ compacto implica que $S\circ T,T\circ S$ compactos.
+    \item $T_n:H\to H, n=1,2,\ldots$ compactos y $\lim_{n \to \infty}
+      \|T_n-T\|=0$ implica $T$ compacto.
+    \item $T$ compacto implica que $\exists T_n:H\to H$ operadores de rango
+      finito con $\lim_{n \to \infty} \|T_n-T\|=0$.
+    \item $T$ compacto si y solo si  $T^*$ compacto.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}\hfill
+  \begin{enumerate}
+    \item Sea $(x_k)_k\subset B_H$, $(Sx_k)_k$ tiene una subsucesión convergente
+      $Sx_{k_i}\to y$, por continuidad $TSx_{k_i}\to Ty$. Considero ahora
+      $(Tx_k)_k$, como $T$ operador $\|T\|<\infty$, $\left( \frac{Tx_k}{\|T\|}
+      \right)_k\subset B_H $, luego $\left( \frac{STx_k}{\|T\|} \right)_k$ tiene
+      una subsucesión convergente $\frac{STx_{k_i}}{\|T\|}\to y$, con lo que
+      $STx_{k_i}\to \|T\|y$.
+
+    \item Sea $(f^0_k)_k\subset B_H$, para cada $n\in \mathbb{N}$, como $T_n$ 
+      compacto, $\exists (f^{n}_k)_k$ subsucesión de $(f^{n-1}_k)_k$ tal que
+      $(T_n f^n_k)_k$ es convergente. Considero ahora $(Tf_k^k)_k$, veamos que
+      es de Cauchy (y por lo tanto convergente en H completo).
+
+      \begin{align*}
+        \|Tf_k^k - Tf_l^l\| & \le  \|Tf_k^k - T_mf_k^k\| + \|T_mf_k^k - T_mf_l^l\| + \|T_mf_l^l - Tf_l^l\| \\
+                            & \le  \|T - T_m\|(\|f_k^k\|+\|f_l^l\|) + \|T_mf_k^k - T_mf_l^l\| \\
+                            & \le  \|T - T_m\|\cdot 2 + \|T_mf_k^k - T_mf_l^l\| \\
+      .\end{align*}
+
+      Dado $\varepsilon>0$, tomo $m_0$ tal que
+      $\|T-T_{m_0}\|<\frac{\varepsilon}{4}$, y como para $k\ge m_0$ $(f^k_k)_k$ es
+      subsucesión de $(f_k^{m_0})_k$, cuya imagen por $T_{m_0}$ converge, puedo
+      tomar $l,k$ suficientemente grandes para que $\|T_{m_0}f_k^k -
+      T_{m_0}f_l^l\|<\frac{\varepsilon}{2}$.
+
+    \item Tomo $\{e_k\}_1^\infty$ base hilbertiana. Para $H_n:=span
+      \{e_1,e_2,\ldots,e_n\}$, $P_n:=P_{H_n}$, $P_n+Q_n=Id$, $P_n\circ T$ tiene
+      rango en $H_n$ finito-dimensional. Basta ver que $\|T-P_n\circ
+      T\|=\|Q_n\circ T\|\to 0$.
+
+      $\|Q_nT\|=\sup \{\|Q_nT f\|: \|f\|\le 1\} =\sup \{\|Q_ng\|:g\in T(B_H)\}
+      $. Pero $T(B_H)$ es relativamente compacto, y $\{Q_n\}_{n\in \mathbb{N}}$ 
+      es equicontinua, $\|Q_n\|=1$ para cada $n\in \mathbb{N}$, así que por el
+      teorema de Ascoli la convergencia puntual y la uniforme son equivalente.
+      Basta ver entonces que $\|Q_ng\|\to 0$ para cada $g\in T(B_H)$.
+       \[
+       \|Q_ng\|^2=\sum_{i=n+1}^{\infty} |\dotp{g}{e_i}|^2\to 0
+       ,\] 
+       pues la serie $\sum_{i=1}^{\infty} |\dotp{g}{e_i}|^2=\|g\|$ converge.
+
+     \item Para la necesidad basta aplicar (\ref{le:finite-range-adjoint}) y el
+       apartado (2), junto con que $(T_n-T)^*=T_n^*-T^*$. La suficiencia se
+       sigue de que  $T=T^{**}$.
+  \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+  \label{prop:diagonal-operator-properties}
+  Sea $H$ Hilbert separable, $\{e_k\}_1^\infty$ base ortonormal,
+  $(\lambda_k)_k \subset \mathbb{C}$ acotada. Defino $Te_k:=\lambda_k e_k$,
+  luego en general $Tx=\sum_{n=1}^{\infty} \lambda_k \dotp{x}{e_k}e_k$.
+  Entonces:
+
+  \begin{enumerate}
+    \item $\|T\|=\sup \{|\lambda_k|:k=1,2,\ldots\} $.
+    \item $T^* e_k=\overline{\lambda_k}e_k$.
+    \item $T=T^* \iff (\lambda_k)_k\subset \mathbb{R}$.
+    \item T es un proyector si y solo si $(\lambda_k)_k\subset \{0,1\} $.
+    \item T es compacto si y solo si  $\lim_{k \to \infty} \lambda_k=0$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}\hfill
+  \begin{enumerate}
+    \item Para $\|x\|\le 1$, 
+      \begin{align*}
+        \|Tx\| & \le \sum_{n=1}^{\infty} |\lambda_k| |\dotp{x}{e_k}| \|e_k\| \\
+               & \le \sup \{|\lambda_k|:k=1,2,\ldots\} \sum_{n=1}^{\infty} |\dotp{x}{e_k}| \\
+               & = \sup \{|\lambda_k|:k=1,2,\ldots\} \|x\| \\
+               & = \sup \{|\lambda_k|:k=1,2,\ldots\}
+      .\end{align*}
+    \item $\dotp{T^*e_k}{e_i}= \overline{\dotp{e_i}{T^*e_k}}=
+      \overline{\dotp{Te_i}{e_k}}= \overline{\dotp{\lambda_i
+      e_i}{e_k}}=\overline{\lambda_i} \delta_{i,k}$.
+
+    \item Evidente por el apartado anterior.
+    \item Si la definición de proyector es que $\exists M\subset H$ subespacio
+      cerrado tal que $T=P_M$ es evidente.
+    \item Comienzo por la necesidad. Si $\lim_{k \to \infty} \lambda_k \neq 0$,
+      puedo tomar una subsucesión $(\lambda_{k_i})_i$ con $|\lambda_{k_i}|\ge
+      \varepsilon$ para cierto $\varepsilon>0$. Si $i\neq j$,
+      $\|Te_{j_i}-Te_{k_j}\|=\lambda_{k_i}+\lambda_{k_j}=2\varepsilon$, luego no
+      puede tener ninguna subsucesión de Cauchy ni convergente.
+
+      La suficiencia queda por demostrar.
+      % Para la suficiencia, por el apartado (2) de
+      % (\ref{th:operator-compactness-properties}) y que los operadores de rango
+      % finito son comapctos, basta ver que $\|P_nT-T\|=\|Q_nT\|$, donde
+      % $H_n:=span \{e_1,e_2,\ldots,e_n\}$, $P_n:=P_{H_n}$, $P_n+Q_n=Id$. Como
+      % $\lambda_k\to 0$, $C:=\sup \{|\lambda_k|:k=1,2,\ldots\} <\infty$. Para
+      % todo $x$ se da entonces:
+      %
+      % \[
+      % \|Q_nTx\|^2=\sum_{i=n+1}^{\infty} |\lambda_k| |\dotp{x}{e_k}|
+      % \le \|x\|\sum_{i=n+1}^{\infty} |\lambda_k|
+      % = \sum_{i=n+1}^{\infty} |\lambda_k|
+      % .\]
+  \end{enumerate}
+\end{proof}
+
+
+\begin{example}
+  $k:[a,b]\to \mathbb{R}$ continua,
+  \begin{align*}
+    K: L^1[a,b] &\longrightarrow C[a,b] \\
+    f &\longmapsto K(f)(s) = \int_{a}^{b} k(s,t)f(t)dt 
+  ,\end{align*}
+  es compacto (p.178, \cite{cascales2012}).
+\end{example}
+
+\begin{example}
+  Si $\Omega\subset \mathbb{R}^n$ suficientemente regular, $\forall f\in
+  L^2(\Omega)$ existe un único $u\in H=\overline{C_0^\infty(\Omega)}$ con
+  $\dotp{u}{v}=\int_\Omega uv + \int_\Omega \sum u_jv_j$.
+
+  \begin{align*}
+    S: L^2(\Omega) &\longrightarrow H \xhookrightarrow{} L^2(\Omega) \\
+     f&\longmapsto u 
+  \end{align*}
+
+  es compacto por el teorema de Rellich (\ref{th:rellich}).
+\end{example}
+
+\begin{theorem}[Rellich]
+  \label{th:rellich}
+  Sea $\Omega\subset \mathbb{R}^n$ abierto con frontera suficientemente regular,
+  y $\mathcal{F}\subset L^2(\Omega)$ tal que para cierto $K>0$, $\forall g\in
+  L^2(\Omega)$:
+  \begin{enumerate}
+    \item $g_j=\frac{\partial g}{\partial x_j} \in L^2(\Omega)$ $\forall
+      j=1,\ldots,n$.
+    \item $\|g\|_{L^2},\|g_j\|_{L^2}\le K$ $\forall j=1,\ldots,n$.
+  \end{enumerate}
+
+  Entonces $\mathcal{F}$ es relativamente compacto en $L^2(\Omega)$.
+\end{theorem}
+\begin{proof}
+  Tarea.
+\end{proof}
+

@@ -1,0 +1,73 @@
+\subsection{Adjunto de un operador en espacios de Hilbert.}
+
+\begin{remark}
+  Dado un operador $T:H\to H$ y fijado $y\in H$,
+  \begin{align*}
+    \phi_y: H &\longrightarrow \mathbb{K} \\
+    x &\longmapsto \phi_y(x) = \dotp{Tx}{y}
+  \end{align*}
+
+  es una forma lineal y continua, luego por el teorema de Riesz
+  $\phi_y(x)=\dotp{x}{w}$ para cierto $w\in H$. Esto permite definir otro
+  operador, que cumple $T^*y=w$.
+\end{remark}
+
+\begin{definition}
+  El operador $T^*$ se denomina adjunto de $T$, y viene dado por la ecuación
+  $\dotp{Tx}{y}=\dotp{x}{T^*y}$ $\forall x,y\in H$.
+\end{definition}
+
+\begin{definition}
+  Si $T=T^*$, se dice que $T$ es autoadjunto.
+\end{definition}
+
+\begin{remark} \label{rem:norm-alternative}
+  $\sup \{|\dotp{Tf}{g}| : \|f\|,\|g\|\le 1\}=
+  \sup \{\sup \{|\dotp{Tf}{g}| : \|g\|\le 1 \} : \|f\|\le 1\}=
+  \sup \{\|Tf\|:\|f\|\le 1\} =\|T\|$.
+\end{remark}
+
+\begin{remark}
+  Como $|\dotp{Tf}{g}|=|\dotp{f}{T^*g}|=|\dotp{T^*g}{f}|$, en vista de la
+  observación anterior $\|T\|=\|T^*\|$.
+\end{remark}
+
+\begin{proposition}
+  Si $T=T^*$, entonces $\|T\|=\sup \{|\dotp{Tf}{f}|:\|f\|\le 1\} $.
+\end{proposition}
+
+\begin{proof}
+  Llamo $M=\sup \{|\dotp{Tf}{f}|:\|f\|\le 1\} $, es obvio que $M\le
+  \|T\|$ por (\ref{rem:norm-alternative}). Veamos la desigualdad contraria.
+
+  \begin{gather*}
+  \dotp{T(f+g)}{f+g}- \dotp{T(f-g)}{f-g}=\\
+  \dotp{Tf}{f}+ \dotp{Tf}{g} + \dotp{Tg}{f}+ \dotp{Tg}{g}-
+  \dotp{Tf}{f}+ \dotp{Tf}{g} + \dotp{Tg}{f}- \dotp{Tg}{g}=\\
+  2\cdot \dotp{Tf}{g} + 2\cdot \dotp{Tg}{f}=
+  2\cdot \dotp{Tf}{g} + 2\cdot \dotp{g}{T^*f}=
+  2\cdot \dotp{Tf}{g} + 2\cdot \dotp{g}{Tf}=\\
+  4\cdot Re(\dotp{Tf}{g})
+  ,\end{gather*}
+
+  en el caso $\mathbb{K}=\mathbb{R}$ se tiene
+  $\dotp{Tf}{g}=\frac{1}{4}\dotp{T(f+g)}{f+g}- \dotp{T(f-g)}{f-g}$, de donde:
+
+  \begin{align*}
+    |\dotp{Tf}{g}| & \le \frac{1}{4}\left[|\dotp{T(f+g)}{f+g}| + |\dotp{T(f-g)}{f-g}|  \right] \\
+                   & = \frac{1}{4}\left[\left|\dotp{T(\frac{f+g}{\|f+g\|})}{\frac{f+g}{\|f+g\|}}\right|\|f+g\|^2
+                       +\left|\dotp{T(\frac{f-g}{\|f-g\|})}{\frac{f-g}{\|f-g\|}}\|f-g\|^2\right|\right]\\
+                   & \le \frac{M}{4}\left[ \|f+g\|^2+\|f-g\|^2 \right] \\
+                   & = \frac{M}{2} \left[ \|f\|^2+\|g\|^2 \right] 
+  ,\end{align*}
+  
+  siendo la última igualdad por la ley del paralelogramo. Si $f,g$ tienen
+  norma no superior a $1$ llegamos a $|\dotp{Tf}{g}|\le M$, y al tomando
+  supremos en $f,g$ se tiene $\|T\|\le  M$ por (\ref{rem:norm-alternative}).
+
+
+
+
+
+\end{proof}
+
