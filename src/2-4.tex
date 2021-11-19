@@ -1,6 +1,11 @@
 \subsection{Operadores compactos.}
 
 \begin{definition}
+  Dado $X$ espacio topológico, $Y\subset X$ es relativamente compacto si su
+  clausura es compacta.
+\end{definition}
+
+\begin{definition}
   Un operador es compacto si la imagen de la bola unidad es relativamente
   compacta.
 \end{definition}
@@ -8,7 +13,7 @@
 \begin{remark}
   En espacios métricos, y en concreto en espacios normados, la compacidad
   relativa equivale a que cualquier sucesión contenga una subsucesión
-  convergente.
+  convergente (en el espacio $X$, no en $Y$).
 \end{remark}
 
 \begin{lemma}
@@ -95,6 +100,12 @@
   \end{enumerate}
 \end{proof}
 
+\begin{remark}
+  Si $T:H\to H$ es un operador de rango finito, entonces es compacto, pues la
+  imagen está contenida en una bola de un espacio de dimensión finita, que es
+  compacta, 
+\end{remark}
+
 \begin{proposition}
   \label{prop:diagonal-operator-properties}
   Sea $H$ Hilbert separable, $\{e_k\}_1^\infty$ base ortonormal,
@@ -133,19 +144,20 @@
       $\|Te_{j_i}-Te_{k_j}\|=\lambda_{k_i}+\lambda_{k_j}=2\varepsilon$, luego no
       puede tener ninguna subsucesión de Cauchy ni convergente.
 
-      La suficiencia queda por demostrar.
-      % Para la suficiencia, por el apartado (2) de
-      % (\ref{th:operator-compactness-properties}) y que los operadores de rango
-      % finito son comapctos, basta ver que $\|P_nT-T\|=\|Q_nT\|$, donde
-      % $H_n:=span \{e_1,e_2,\ldots,e_n\}$, $P_n:=P_{H_n}$, $P_n+Q_n=Id$. Como
-      % $\lambda_k\to 0$, $C:=\sup \{|\lambda_k|:k=1,2,\ldots\} <\infty$. Para
-      % todo $x$ se da entonces:
-      %
-      % \[
-      % \|Q_nTx\|^2=\sum_{i=n+1}^{\infty} |\lambda_k| |\dotp{x}{e_k}|
-      % \le \|x\|\sum_{i=n+1}^{\infty} |\lambda_k|
-      % = \sum_{i=n+1}^{\infty} |\lambda_k|
-      % .\]
+      Para la suficiencia, por el apartado (2) de
+      (\ref{th:operator-compactness-properties}) y que los operadores de rango
+      finito son compactos, basta ver que $\|P_nT-T\|=\|Q_nT\|$, donde
+      $H_n:=span \{e_1,e_2,\ldots,e_n\}$, $P_n:=P_{H_n}$, $P_n+Q_n=Id$. Para
+      $x\in H$ con $\|x\|\le 1$:
+
+      \begin{align*}
+        \|Q_nTx\|^2 & =\sum_{i=n+1}^{\infty} |\lambda_k| |\dotp{x}{e_k}|\\
+                    & \le \sup \{|\lambda_k|: k>n\}\sum_{i=n+1}^{\infty} |\dotp{x}{e_k}|\\
+                    & \le \sup \{|\lambda_k|: k>n\}\|x\|\\
+                    & = \sup \{|\lambda_k|: k>n\} \to 0
+      ,\end{align*}
+
+      cuando $n\to \infty$, uniformemente en $B_H$.
   \end{enumerate}
 \end{proof}
 
