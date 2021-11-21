@@ -1,0 +1,59 @@
+\subsection{Operadores diferenciales y soluciones débiles.}
+
+\begin{definition}
+  Dado $\Omega\subset \mathbb{R}^n$ abierto, se define
+  \[
+  \mathcal{D}(\Omega)=\left\{g:\Omega\to \mathbb{R}:g\text{ de clase
+  }C^\infty,sop(g)=\overline{\{x:g(x)\neq 0\} } \text{ compacto}\right\} 
+  .\] 
+\end{definition}
+
+\begin{definition}
+  Dado el operador diferencial lineal $L=\sum_{|\alpha|\le n}a_\alpha\left(
+  \frac{\partial}{\partial x} \right)^\alpha$, con los $a_\alpha\in \mathbb{K}$,
+  se define el operador adjunto como $L^*:=\sum_{|\alpha|\le
+  n}(-1)^{|\alpha|}\overline{a_\alpha}\left( \frac{\partial}{\partial x}
+\right)^\alpha$.
+\end{definition}
+
+\begin{lemma}[Regularación]
+  $\mathcal{D}(\Omega)$ es denso en $L^2(\Omega)$ para el producto escalar
+  estándar.
+\end{lemma}
+
+\begin{theorem}[Gauss]\label{th:gauss}
+  Dado $h\in C^(\overline{\Omega})$, si $\partial \Omega$ es suficientemente
+  buena entonces
+  \[
+    \int_\Omega \frac{\partial h}{\partial x_j} (x)dx=
+    \int_{\partial \Omega} h\cdot n_j d\theta
+  .\] 
+\end{theorem}
+
+\begin{proposition}
+  $\dotp{L\phi}{\psi}=\dotp{\phi}{L^*\psi}$ $\forall \phi,\psi \in
+  \mathcal{D}(\Omega)$.
+\end{proposition}
+
+\begin{proof}
+  Lo vemos para $L=\frac{\partial }{\partial x_j} $, bastando aplicar
+  (\ref{th:gauss}) a $h=\phi\cdot \psi$, observando que por tener estas soporte
+  compacto valen $0$ en la frontera, y que aunque la frontera de $\Omega$ no sea
+  suficientemente buena, como el soporte es compacto siempre podemos tomar un
+  abierto entre el soporte y $\Omega$ con frontera suficientemente buena.
+
+  Por inducción se generaliza a derivadas parciales de cualquier orden, y por
+las propiedades del producto escalar al caso general.
+\end{proof}
+
+\begin{corollary}
+  $\forall f\in L^2(\Omega)$, si $u$ es suficientemente regular y verifica que
+  $Lu=f$, entonces $\dotp{f}{\phi}=\dotp{u}{L^* \phi}$ $\forall \phi \in
+  \mathcal{D}(\Omega)$.
+\end{corollary}
+
+\begin{definition}
+  Si $u\in L^2(\Omega)$ verifica $\dotp{f}{\phi}=\dotp{u}{L^* \phi}$ para cada
+  $\phi \in \mathcal{D}(\Omega)$, entonces decimos que es solución débil de la
+  ecuación $Lv=f$.
+\end{definition}

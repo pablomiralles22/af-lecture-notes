@@ -1,0 +1,21 @@
+\subsection{El método de Galerkin.}
+
+\begin{theorem}
+  Sea $M_1\subset M_2 \subset \ldots$ una sucesión de subespacios cerrados de un
+  espacio de Hilbert $H$ con unión densa. Sea $a:H\times H\to \mathbb{R}$ 
+  bilineal, simétrica, continua y fuertemente positiva y sea $b:H\to \mathbb{R}$ 
+  una forma lineal y continua. Consideramos el problema de minimización del
+  funcional
+  \[
+  J(x):=\frac{1}{2}a(x,x)-b(x)
+  \] 
+  sobre el subespacio $M_n$, y sea $u_n\in M_n$ su solución, esto es,
+  \[
+  a(x,u_n)=b(x)
+  \] 
+  para todo $x\in M_n$. Entonces la sución $(u_n)_n$ converge hacia la solución
+  $u$ del problema de minimización de $J$ en todo $H$.
+\end{theorem}
+\begin{proof}
+  (p.81, \cite{cascales2012}).
+\end{proof}

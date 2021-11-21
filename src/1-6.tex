@@ -1,0 +1,43 @@
+\subsection{Dual de un espacio de Hilbert: teorema de Riesz-Fréchet.}
+
+\begin{theorem}[F. Riesz - M. Fréchet]\label{th:riesz}
+  Sea un espacio de Hilbert $H$ y una forma lineal $f:H\to \mathbb{K}$. Las
+  siguientes afirmaciones son equivalentes:
+  \begin{enumerate}
+    \item La forma lineal $f$ es continua.
+    \item Existe un único $y\in H$ tal que $f(x)=\dotp{x}{y}$ para cada $x\in
+      H$, siendo además $\|f\|=\|y\|$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+  Sea $X$ espacio vectorial sobre $\mathbb{K}$, $B:X \times X\to \mathbb{K}$.
+  \begin{enumerate}
+    \item Se dice que $B$ es bilineal si fijados $x,y$ respectivamente, $B(\cdot
+      ,y),B(x,\cdot )$ son lineales.
+    \item Se dice que $B$ es sesquilineal si $B(\cdot ,y)$ es lineal y
+      $B(x,\cdot )$ es lineal conjugada, esto es,
+      $B(x,ay)=\overline{a}B(x,y)$.
+    \item Se dice que $B$ es simétrica si $B(x,y)=B(y,x)$ $\forall x,y\in H$.
+    \item Se dice que $B$ es positiva si $B(x,x)\ge 0$ para cada $x\in X$.
+  \end{enumerate}
+
+  Si $X$ es normado:
+
+  \begin{enumerate}
+    \item Se dice que $B$ es acotada si $\exists M>0$ tal que $|B(x,y)|\le
+      M\|x\|\|y\|$ para cada $x,y\in X$.
+    \item Se dice que $B$ es fuertemente positiva si $\exists c>0$ tal que
+      $B(x,x)\ge c\|x\|^2$ para cada $x\in X$.
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Lax-Milgram]\label{th:lax-milgram}
+  Sea $H$ espacio de Hilbert sobre $\mathbb{K}$ y $B$ una forma sesquilineal en
+  $H$ acotada y fuertemente positiva. Entonces existe un isomorfismo de espacios
+  de Hilbert $T:H\to H$, unívocamente determinado, tal que
+  \[
+  B(x,y)=\dotp{x}{Ty}
+  ,\] 
+  para cada $x,y\in H$.
+\end{theorem}
