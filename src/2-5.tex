@@ -22,7 +22,7 @@
 
   Como $T$ es compacto, $(T\phi_n)_n$ debe tener una subsucesión convergente,
   pero como $T\phi_n=\lambda \phi_n$ $\forall n\in \mathbb{N}$,
-  $\|T\phi_{n_j}-T\phi_{n_k}\|=|\lambda|\|\phi_{n_j}-\phi_{n_k}\|=\lambda\sqrt{2}
+  $\|T\phi_{n_j}-T\phi_{n_k}\|=|\lambda|\|\phi_{n_j}-\phi_{n_k}\|=|\lambda|\sqrt{2}
   $, así que ninguna subsucesión es de Cauchy, y no pueden ser convergentes.
 \end{proof}
 
@@ -33,10 +33,10 @@
 \end{proposition}
 
 \begin{proof}
-  Sabemos que $\|T\|=\sup \{|\dotp{Tf}{f}|:\|f\|\le 1\}$ por ser $T=T^*$. La
+  Sabemos que $\|T\|=\sup \{|\dotp{Tf}{f}|:\|f\|=1\}$ por ser $T=T^*$. La
   idea es encontrar un máximo.
 
-  Tomo $(f_n)_n$ con $\|f_n\|\le 1$ y $\dotp{Tf_n}{f_n}\to \lambda$ para
+  Tomo $(f_n)_n$ con $\|f_n\|=1$ y $\dotp{Tf_n}{f_n}\to \lambda$ para
   $|\lambda|=\|T\|$. Como $T$ es compacto, $(Tf_n)_n$ tiene una subsucesión
   $(Tf_{n_k})_k$ convergente en $H$, y llamo al límite $g\in H$.
 
@@ -56,7 +56,8 @@
 
   \[
   0\le \|g-\lambda \lim_{k \to \infty} f_{n_k}\|^2 \le 
-  \|g\|^2-2\lambda\cdot \lambda + \lambda^2=0
+  \|g\|^2-2\lambda\cdot \lambda + \lambda^2 =
+  \|g\|^2 - \lambda^2 \le 0
   .\] 
   
   Se tiene entonces que $g=\lim_{k \to \infty} \lambda f_{n_k}$, y por lo tanto
@@ -66,7 +67,7 @@
   f_{n_k})=\lambda g
   ,\] 
 
-  quedan demostrada la afirmación.
+  quedando demostrada la afirmación.
 
 \end{proof}
 
@@ -149,7 +150,8 @@ autoadjuntos.
 \begin{theorem}[Alternativa de Fredholm]
   \label{th:fredholm}
   Dado $T$ operador compacto y autoadjunto en un espacio $H$ de Hilbert
-  separable, con base ortonormal $\{e_k\}_1^\infty$, entonces:
+  separable, con una base ortonormal de vectores propios $\{e_n\}_{n=1}^\infty$,
+  $Te_n = \lambda_n e_n$,
   \begin{enumerate}
     \item Si $\lambda\not\in \sigma_p(T) \cup \{0\} $, el problema (P) tiene una
       única solución dada por:
@@ -172,11 +174,8 @@ autoadjuntos.
 \begin{proof}\hfill
   \begin{enumerate}
     \item
-      Por Hilbert-Schmidt (\ref{th:hilbert-schmidt}), existe una base
-      $\{e_n\}_1^\infty$ base hilbertiana con $Te_n=\lambda_n e_n$ tal que
-      $|\lambda_1|\ge |\lambda_2|\ge \ldots \to 0$.
-
-
+      La base $\{e_n\}_{n=1}^\infty$ cumple $\lim_n \lambda_n = 0$
+      (\ref{prop:diagonal-operator-properties}).
       Supongamos que $u$ es solución de (P), observamos que
       \begin{align*}
         (\lambda-\lambda_n)\dotp{u}{e_n} &= \dotp{\lambda u}{e_n} - \dotp{u}{\bar{\lambda_n} e_n}\\
