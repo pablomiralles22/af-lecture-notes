@@ -25,7 +25,7 @@
   Si el rango de $K$ es $span\{v_1,\ldots,v_n\}$, con los $v_i$ ortonormales, y
   $P_i$ es la proyección de $H$ en $span \{v_i\}$, entonces $P_i\circ K$ son
   formas lineales continuas, $\exists ! u_i$ tal que $P_i\circ K x =
-  \dotp{x}{u_i}$ para cada $x\in H$. Se tiene entonces:
+  \dotp{x}{u_i}v_i$ para cada $x\in H$. Se tiene entonces:
 
    \[
   Kx = \sum_{i=1}^{n} \dotp{x}{u_i} v_i
@@ -141,8 +141,8 @@
     \item Comienzo por la necesidad. Si $\lim_{k \to \infty} \lambda_k \neq 0$,
       puedo tomar una subsucesión $(\lambda_{k_i})_i$ con $|\lambda_{k_i}|\ge
       \varepsilon$ para cierto $\varepsilon>0$. Si $i\neq j$,
-      $\|Te_{j_i}-Te_{k_j}\|=\lambda_{k_i}+\lambda_{k_j}=2\varepsilon$, luego no
-      puede tener ninguna subsucesión de Cauchy ni convergente.
+      $\|Te_{j_i}-Te_{k_j}\|=\sqrt{|\lambda_{k_i}|^2+|\lambda_{k_j}|^2}\ge \varepsilon$,
+      luego no puede tener ninguna subsucesión de Cauchy ni convergente.
 
       Para la suficiencia, por el apartado (2) de
       (\ref{th:operator-compactness-properties}) y que los operadores de rango
@@ -154,7 +154,7 @@
         \|Q_nTx\|^2 & =\sum_{i=n+1}^{\infty} |\lambda_k| |\dotp{x}{e_k}|\\
                     & \le \sup \{|\lambda_k|: k>n\}\sum_{i=n+1}^{\infty} |\dotp{x}{e_k}|\\
                     & \le \sup \{|\lambda_k|: k>n\}\|x\|\\
-                    & = \sup \{|\lambda_k|: k>n\} \to 0
+                    & \le \sup \{|\lambda_k|: k>n\} \to 0
       ,\end{align*}
 
       cuando $n\to \infty$, uniformemente en $B_H$.
@@ -163,7 +163,7 @@
 
 
 \begin{example}
-  $k:[a,b]\to \mathbb{R}$ continua,
+  $k:[a,b]\times[a,b]\to \mathbb{R}$ continua,
   \begin{align*}
     K: L^1[a,b] &\longrightarrow C[a,b] \\
     f &\longmapsto K(f)(s) = \int_{a}^{b} k(s,t)f(t)dt 
