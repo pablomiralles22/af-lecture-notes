@@ -135,18 +135,18 @@ Trabajamos ahora en un espacio vectorial $E$ general.
 
 \begin{definition}
   Cuando $\forall x$ existe $\lambda_0>0$ tal que $x\in \lambda A$ si
-  $\lambda>\lambda_0$, se dice que $A$ es absorvente.
+  $\lambda>\lambda_0$, se dice que $A$ es absorbente.
 \end{definition}
 
 \begin{definition}
-  Dado $A$ absorvente con $0$ en el interior de $A$, defino $P_A(x):= \inf \{\lambda>0:x\in
+  Dado $A$ absorbente con $0$ en el interior de $A$, defino $P_A(x):= \inf \{\lambda>0:x\in
   \lambda A\} $. A esta aplicación se le llama el funcional de Minkowski.
 \end{definition}
 
 \begin{proposition}
   Las siguientes propiedades son ciertas:
   \begin{enumerate}
-    \item $P_a\ge 0$ y positivamente homogéneo.
+    \item $P_A\ge 0$ y positivamente homogéneo.
     \item Si $A$ convexo, $P_A$ es subaditiva.
     \item $\{x:P_A(x)<1\} \subset A \subset \{x:P_A(x)\le 1\}  $.
   \end{enumerate}
@@ -157,3 +157,78 @@ Trabajamos ahora en un espacio vectorial $E$ general.
 \end{proof}
 
 
+\begin{theorem}[Mazur]
+  Sea $E[\tau]$ un espacio vectorial topológico, $M\subset E$ una variedad
+  afín y $A\subset E$ no vacío, abierto y convexo. Si $A\cap M= \emptyset$,
+  entonces existe un hiperplano afín cerrado H en $E[\tau]$ tal que $A\cap
+  H=\emptyset$ y $M\subset H$.
+\end{theorem}
+
+\begin{proof}
+  $M=x_0+F$ con $F\subset E$ subespacio vectorial. Podemos suponer sin pérdida
+  de generalidad que $0\in A$, pues se puede trasladar el problema. Como $A$ es
+  abierto, $A$ es absorbente, y se comprueba además que $A=\{x\in E:P_A(x)<1\}
+  $, y aplicando que $A\cap M=\emptyset$ $P_A(x_0+y)\ge  1, \forall y\in F$.
+  Defino 
+  \begin{align*}
+    u: F\oplus span \{x_0\}  &\longrightarrow \to \mathbb{R} \\
+    (y,\lambda x_0) &\longmapsto u((y,\lambda x_0)) = \lambda
+  .\end{align*}
+  
+  $u$ es lineal, y $u(y+\lambda x_0) \le P_A(y+\lambda x_0)$ $\forall \lambda\in
+  \mathbb{R},y\in F$, pues:
+
+  \begin{itemize}
+    \item si $\lambda < 0$, $u(y+\lambda x_0)=\lambda\le 0\le P_A(x_0+y)$;
+    \item si $\lambda > 0$, $u(y+\lambda x_0)=\lambda \cdot 1 \le \lambda
+      P_A(\frac{1}{\lambda}y+x_0)=P_A(y+\lambda x_0)$.
+  \end{itemize}
+
+  Aplicando a $u$ la forma analítica de Hahn-Banach, $u$ se extiende a
+  $\tilde{u}:E\to \mathbb{R}$ tal que $\tilde{u}(x)\le P_A(x)$ para cada $x\in
+  E$. Al ser $A$ un abierto, esa última desigualdad implica que $\tilde{u}$ es
+  continua (comprobar el límite en $0$), y definiendo
+
+  \[
+  H=\{x\in E: \tilde{u}(x)=1\}
+  ,\] 
+
+  se tiene $M\subset H$ y $A\cap H=\emptyset$ ($x\in H\implies P_A(x)\ge
+  \tilde{u}(x)=1\implies x\not\in A$).
+\end{proof}
+
+\begin{corollary}[1er Teorema de Separación]
+  Sea $E[\tau]$ espacio vectorial topológico, $A$ y $B$ subconjuntos convexos no
+  vacíos y abiertos, con $A\cap B= \emptyset$. Entonces existe un hiperplano $H$ 
+  real cerrado que separa estrictamente $A$ y $B$, esto es, existe $f:E\to
+  \mathbb{R}$ lineal y continua, $H=\{x\in E:f(x)=\xi\} $ y $A\subset \{x\in
+  E:f(x)<\xi\}, B\subset \{x\in E:f(x)>\xi\} $.
+\end{corollary}
+
+\begin{proof}
+  $A-B$ (diferencia algebraica, no de conjuntos) es convexo, abierto, no vacío y
+  $0\not\in A-B$, por Mazur $\exists f:E\to \mathbb{R}$ lineal y continua con
+  $0\in H=\{x\in E:f(x)=0\} $ y $H\cap (A-B)$, de donde $f(A-B)$ será conexo en
+  $\mathbb{R}$, es decir, un intervalo, con $0\not\in f(A-B)$, luego $f$ separa
+  estrictamente $A$ y $B$.
+\end{proof}
+
+\begin{corollary}[2o Teorema de Separación]
+  Sea $E[\tau]$ e.v.t. localmente convexo, $K,F$ subconjuntos convexos disjuntos
+  de $E$, con $K$ compacto y $F$ cerrado. Entonces existe un hiperaplano real
+  cerrado que separa estrictamente $K$ y $F$.
+\end{corollary}
+
+\begin{proof}
+  Si $K$ es compacto, $\exists W$ entorno del origen convexo (por ser localmente
+  convexo) tal que $(K+W)\cap (F+W)=\emptyset$ (ejercicio), bastantndo entonces
+  aplicar el resultado anterior.
+\end{proof}
+
+
+\begin{theorem}[Hahn-Banach, versión geométrica]
+  \label{th:h-b-geom}
+  Dados dos conjuntos $A$ y $B$ convexos y cerrados, existe $H=\{x\in
+  E:f(x)=\lambda\} $ que separa $A$ y $B$, donde $f:E\to \mathbb{R}$ es lineal y
+  continua.
+\end{theorem}
