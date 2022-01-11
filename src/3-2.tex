@@ -1,0 +1,59 @@
+\subsection{Teorema de Baire.}
+
+\begin{definition}
+  Un conjunto es nunca-denso si el interior de su clausura es vacío.
+\end{definition}
+
+\begin{definition}
+  Los conjuntos de primera categoría son las uniones numerables de conjuntos
+  nunca-densos, y los de segunda categoría los que no son de primera.
+\end{definition}
+
+\begin{definition}
+  Un espacio topológico se llama de Baire si la intersección de cualquier
+  sucesión de abiertos densos es un conjunto denso.
+\end{definition}
+
+\begin{theorem}[Baire]
+  Si $(M,d)$ es un espacio métrico completo, entonces $M$ es de Baire.
+\end{theorem}
+\begin{proof}
+  (p. 263, \cite{cascales2012}).
+
+  Sea $(G_n)_n$ una sucesión de abiertos densos. Para demostrar que $\cap_{n\in
+  \mathbb{N}} G_n$ es denso, veamos que para cualquier abierto $\emptyset\neq
+  V\subset M$ se tiene que $V\cap \left( \cap _{n\in \mathbb{N}}G_n \right) \neq
+  \emptyset$. Construyo inductivamente sucesiones $(x_n)_n\subset M$,
+  $(r_n)_n\subset \mathbb{R}^+$ de forma que $B[x_n,r_n] \subset G_n\cap
+  B(x_{n-1},r_{n-1}) \subset G_n \cap G_{n-1}\cap \ldots\cap G_1 \cap V$ y $r_n
+  < \frac{1}{n}$.
+
+  \begin{itemize}
+    \item Como $G_1$ denso en $M$, $\exists x_1 \in G_1\cap V\neq \emptyset$, y
+      por ser abierto $\exists r_1 \in (0,1)$ con $B[x_1,r_1] \subset V\cap
+      G_1$.
+    \item Como $G_n$ denso en $M$, $\exists x_n \in G_n\cap
+      B(x_{n-1},r_{n-1})\neq \emptyset$, y por ser abierto $\exists r_n \in
+      (0,\frac{1}{n})$ con $B[x_n,r_n] \subset G_n\cap B(x_{n-1},r_{n-1})
+      \subset G_n \cap G_{n-1}\cap \ldots\cap G_1 \cap V$.
+  \end{itemize}
+
+  $(x_n)_n$ es de Cauchy, pues para cada $m>n$  $x_m \in B(x_m,r_m)\subset
+  B(x_{m-1},r_{m-1})\subset \ldots\subset B(x_n,r_n)$, y $r_n\to 0$. Como el
+  espacio es completo existe $x=\lim_{n \to \infty} x_n$, debe ser $x\in
+  B[x_n,r_n]$ para cada $n\in \mathbb{N}$, pues ya hemos visto que $\forall m>n$ 
+  $x_m\in B(x_n,r_n)\subset B[x_n,r_n]$, y este es cerrado, basta tomar límites
+  en $m$. Se tiene por construcción entonces que $x\in G_n \cap G_{n-1}\cap
+  \ldots\cap G_1 \cap V$ para cada $n\in \mathbb{N}$, y por lo tanto $x\in V\cap
+  \left( \bigcap_{n\in \mathbb{N}} G_n \right) $
+\end{proof}
+
+\begin{corollary}
+  Si $X$ es un espacio de Banach, entonces su dimensión algebraica o es finita o
+  es no numerable.
+\end{corollary}
+
+\begin{proof}
+  (p. 264, \cite{cascales2012}).
+\end{proof}
+
