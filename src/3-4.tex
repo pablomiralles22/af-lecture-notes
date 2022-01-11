@@ -1,5 +1,47 @@
 \subsection{Teorema de la aplicación abierta y de la gráfica cerrada.}
 
+\begin{definition}
+  Sea $X$ un espacio normado y $A\subset X$ :
+  \begin{enumerate}
+    \item Se dice que $A$ es CS-compacto si para toda sucesión $(x_n)_n\subset
+      A$ y cualquier sucesión $(\lambda_n)_n\subset [0,1]$ tal que
+      $\sum_{n=1}^{\infty} \lambda_n=1$ se verifica que la serie
+      $\sum_{n=1}^{\infty} \lambda_n x_n$ converge a un punto de $A$.
+    \item Se dice que $A$ es CS-cerrado si para toda sucesión $(x_n)_n\subset
+      A$ y cualquier sucesión $(\lambda_n)_n\subset [0,1]$ tal que
+      $\sum_{n=1}^{\infty} \lambda_n=1$ y para la cual la serie
+      $\sum_{n=1}^{\infty} \lambda_n x_n$ converge a un punto, se verifica que
+      dicho punto está en $A$.
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  \label{prop:open-map-1}
+  Sea $X$ espacio normado y $A\subset X$:
+  \begin{itemize}
+    \item Si $X$ es de Banach su bola unidad es CS-compacta.
+    \item Si $A$ es cerrado y convexo, entonces $A$ es CS-cerrado.
+    \item Si $A$ es CS-compacto, entonces $A$ es CS-cerrado y acotado. Si $X$ es
+      de Banach, entonces el recíproco también es cierto.
+  \end{itemize}
+  (Prop 3.4.2., \cite{cascales2012})
+\end{proposition}
+
+\begin{proposition}
+  \label{prop:open-map-2}
+  Sean $X,Y$ espacios normados y $T:X\to Y$ lineal y continua. Si $A\subset X$ 
+  es CS-compacto entonces $T(A)$ es CS-compacto.
+  (Prop 3.4.3., \cite{cascales2012})
+\end{proposition}
+
+\begin{proposition}
+  \label{prop:open-map-3}
+  Sea $X$ espacio normado y $A\subset X$ CS-cerrado. Entonces $A$ y
+  $\overline{A}$ tienen el mismo interior.
+  (Prop 3.4.4., \cite{cascales2012})
+\end{proposition}
+
+
 \begin{theorem}[De la aplicación abierta]
   \label{th:open-map}
   Sean $X$ un espacio de Banach e $Y$ un espacio normado. Sea $T:X\to Y$ lineal
@@ -7,11 +49,43 @@
   aplicación sobreyectiva y abierta, siendo además $Y$ un espacio de Banach.
 \end{theorem}
 
-\begin{proof}(p. 278, \cite{cascales2012})
-  
+\begin{proof}(Teo. 3.4.5., \cite{cascales2012})
+
+  Para ver que $T$ es abierta y sobreyectiva basta comprobar que $T(B_X)\supset
+  rB_Y$ para cierto $r>0$.
+
+  Como $B_X$ es CS-compacto (\autoref{prop:open-map-1}.(i)), $T(B_X)$ también lo es
+  (\autoref{prop:open-map-2}), así que $T(B_X)$ es CS-cerrado
+  (\autoref{prop:open-map-1}.(iii)).
+
+  Como $T(X)=\bigcup_{n} nT(B_x)$ es de segunda categoría en $Y$, y las
+  homotecias son homomorfismos,  $\overline{T(B_X)}$ tiene interior no vacío,
+  que coincide con el interior de $T(B_X)$ (\autoref{prop:open-map-3}). Puedo
+  tomar entonces $y_0\in Y,r>0$ tales que $B_Y(y_0,r)\subset T(B_X)$. Por la
+  simetría de las bolas, $B_Y(-y_0,r)\subset T(B_X)$, y por lo tanto:
+
+  \begin{equation}
+    \label{eq:open-map-ball-equality}
+    B_Y(0,r) \subset \frac{1}{2}B_Y(-y_{0},r)+\frac{1}{2}B_Y(y_0,r)
+    \subset \frac{1}{2}T(B_X)+\frac{1}{2}T(B_X)\subset T(B_X)
+  \end{equation}
+  como queríamos ver. Falta solo comprobar que $Y$ es completo entonces, para lo
+  cual es suficiente ver que si $(y_n)_n\subset Y$ y $\sum_n \|y_n\|<\infty$
+  entonces $\sum_ny_n$ converge.
+
+  Por (\autoref{eq:open-map-ball-equality}), para cada $n$ podemos tomar $x_n
+  \in B_X$ con $Tx_n=\frac{r}{2}\frac{y_n}{\|y_n\|}$, así que haciendo
+  $z_n=\frac{2}{r}\|y_n\|x_n$ se da $Tz_n=y_n$ y $\|z_n\|\le
+  \frac{2}{r}\|y_n\|$. Pero entonces $\sum_n \|z_n\|<\infty$, y existe
+  $x:=\sum_n x_n$ por la completitud de $X$. Finalmente, por la continuidad de
+  $T$, $\sum_n y_n$ es convergente a $Tx$.
+
+
+
 \end{proof}
 
 Una versión más particular, y seguramente la que pregunte en el oral:
+
 \begin{corollary}
   \label{cor:open-map}
   Sean $X,Y$ espacios de Banach y $T:X\to Y$ lineal y continua, entonces $T$ es
