@@ -224,6 +224,26 @@ Trabajamos ahora en un espacio vectorial $E$ general.
   estrictamente $A$ y $B$.
 \end{proof}
 
+\begin{definition}
+  Se dice que un espacio vectorial topológico es localmente convexo si el origen
+  tiene una base de entornos convexos.
+\end{definition}
+
+\begin{remark}
+  Los espacios normados son localmente conexos.
+\end{remark}
+
+\begin{lemma}
+  Sea $E[\tau]$ e.v.t., $K\subset E$ compacto y $F\subset E$ cerrado, entonces
+  existe un entorno abierto del origen $W$ tal que $(K+W)\cap (F+W)=\emptyset$.
+\end{lemma}
+\begin{proof}
+  En el caso de un espacio normado es sencillo, pues  $d(K,F)=\varepsilon>0$, de
+  lo contrario (como $K$ es también cerrado) tendrían un punto de acumulación en
+  común, que estaría en ambos conjuntos y no serían disjuntos. Basta tomar
+  $W=B(0,\frac{\varepsilon}{2})$.
+\end{proof}
+
 \begin{corollary}[2o Teorema de Separación]
   Sea $E[\tau]$ e.v.t. localmente convexo, $K,F$ subconjuntos convexos disjuntos
   de $E$, con $K$ compacto y $F$ cerrado. Entonces existe un hiperplano real
@@ -231,15 +251,23 @@ Trabajamos ahora en un espacio vectorial $E$ general.
 \end{corollary}
 
 \begin{proof}
-  Si $K$ es compacto, $\exists W$ entorno del origen convexo (por ser localmente
-  convexo) tal que $(K+W)\cap (F+W)=\emptyset$ (ejercicio), bastando entonces
-  aplicar el resultado anterior.
+  Si $K$ es compacto, $\exists W$ entorno del origen tal que $(K+W)\cap
+  (F+W)=\emptyset$, y lo puedo suponer convexo por ser $E[\tau]$ localmente
+  convexo., bastando entonces aplicar el resultado anterior.
 \end{proof}
 
 
 \begin{theorem}[Hahn-Banach, versión geométrica]
   \label{th:h-b-geom}
-  Dados dos conjuntos $A$ y $B$ convexos y cerrados, existe $H=\{x\in
-  E:f(x)=\lambda\} $ que separa $A$ y $B$, donde $f:E\to \mathbb{R}$ es lineal y
-  continua.
+  Sea $X$ espacio de Banach. Dados dos conjuntos $A$ y $B$ convexos y cerrados,
+  existe $H=\{x\in E:f(x)=\lambda\} $ que separa $A$ y $B$, donde $f:E\to
+  \mathbb{R}$ es lineal y continua.
 \end{theorem}
+\begin{proof}
+  Vale el mismo argumento que en el segundo teorema de separación.
+\end{proof}
+
+\begin{remark}
+  En clase no copié las hipótesis sobre el espacio (si era de Banach o e.v.t.),
+  pero debería aceptarlo con espacio de Banach.
+\end{remark}
