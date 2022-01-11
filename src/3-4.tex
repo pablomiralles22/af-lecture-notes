@@ -1,1 +1,68 @@
 \subsection{Teorema de la aplicación abierta y de la gráfica cerrada.}
+
+\begin{theorem}[De la aplicación abierta]
+  \label{th:open-map}
+  Sean $X$ un espacio de Banach e $Y$ un espacio normado. Sea $T:X\to Y$ lineal
+  y continua tal que $T(X)$ es de segunda categoría en $Y$. Entonces $T$ es una
+  aplicación sobreyectiva y abierta, siendo además $Y$ un espacio de Banach.
+\end{theorem}
+
+\begin{proof}(p. 278, \cite{cascales2012})
+  
+\end{proof}
+
+Una versión más particular, y seguramente la que pregunte en el oral:
+\begin{corollary}
+  \label{cor:open-map}
+  Sean $X,Y$ espacios de Banach y $T:X\to Y$ lineal y continua, entonces $T$ es
+  sobreyectiva si y solo si es abierta.
+\end{corollary}
+
+\begin{definition}
+  Una aplicación $f:M_1\to M_2$, donde $M_1,M_2$ son espacios topológicos
+  Hausdorff, se dice que tiene gráfica cerrada si su gráfica, es decir, el
+  conjunto
+  \[
+  Graf(f)=\{(t,f(t)):t\in M_1\} 
+  \] 
+  es cerrado en el espacio producto $M_1\times M_2$.
+\end{definition}
+
+\begin{theorem}[De la gráfica cerrada]
+  Sean $X,Y$ espacios de Banach y $T:X\to Y$ lineal. Entonces $T$ es continua si
+  y solo si $TA$ tiene gráfica cerrada.
+\end{theorem}
+
+\begin{proof}
+
+  Algunas observaciones:
+
+  \begin{enumerate}
+    \item Como $T$ es lineal, $Graf(T)$ es un espacio vectorial.
+    \item Considero $P_1,P_2$ las proyecciones canónicas en $X \times Y$, que
+      son lineales y continuas en la topología producto (dada por $\|\cdot \|$).
+    \item Llamo $\hat{P}_i=P_i|_{Graf(T)}$, es claro que $\hat{P}_1$ es
+      biyectiva.
+  \end{enumerate}
+
+  \begin{description}
+    \item[$\mathbf{\implies}$] Sea $((x_n,Tx_n))_n$ sucesión en $Graf(T)$ que
+      converge a $(x,y)\in X \times Y$. Como las proyecciones son continuas,
+      $x_n=P_1(x_n,Tx_n)\to P_1(x,y)=y$, y $Tx_n=P_2(x_n,Tx_n)\to P_2(x,y)=y$.
+
+      Como $T$ es continua, $Tx = \lim_{n \to \infty} Tx_n=y$, así que
+      $(x,y)=(x,Tx)\in Graf(T)$, con lo que $Graf(T)$ cerrado.
+
+    \item[$\mathbf{\impliedby}$] Por la observación 1 y bajo la hipótesis de que
+      $Graf(T)$ es cerrado en un espacio de Banach, $Graf(T)$ es también un
+      espacio de Banach.
+
+      Considero la aplicación $S:X\to Graf(T)$, $x\mapsto (x,Tx)$. $S$ es
+      claramente biyectiva, con inversa $\hat{P}_1$. Como $P_1$ es lineal y
+      continua $\hat{P}_1$ también, así que por (\autoref{cor:open-map}) es
+      abierta y $S$ es continua. Se tiene entonces que $T=P_2\circ S$ también lo
+      es, pues es composición de continuas.
+  \end{description}
+
+\end{proof}
+
