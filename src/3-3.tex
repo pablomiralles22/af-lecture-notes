@@ -19,15 +19,40 @@
 Otra versión más sencilla, que es la que puede preguntar en el examen de teoría:
 
 \begin{theorem}[Banach-Steinhaus, de la acotación uniforme]
-  % Sea $(T_n)_n$ una sucesión de aplicaciones lineales continuas de un espacio de
-  % Banach $X$ en un espacio normado $Y$ tal que existe $T(x)=\lim T_n(x)$ para
-  % cada $x \in X$. Si $\forall x\in X$ $\sup_{i \in I}\|T_i(x)\|<\infty$,
-  % entonces $\sup_{i \in I}\|A\|<\infty$.
-  Dados dos espacios Banach, y una familia de aplicaciones lineales y
-  continuas entre ellos, si $\forall x\in X$ $\sup_{i \in
-  I}\|A_i(x)\|<\infty$, entonces $\sup_{i \in I}\|A_i\|<\infty$.
+  % Dados dos espacios de Banach, y una familia de aplicaciones lineales y
+  % continuas entre ellos, si $\forall x\in X$ $\sup_{i \in
+  % I}\|A_i(x)\|<\infty$, entonces $\sup_{i \in I}\|A_i\|<\infty$.
+  Dada una familia de aplicaciones lineales y continuas $\{A_i\}_{i \in I}$
+  entre un espacio de Banach $X$ y un espacio normado $Y$, si $\forall x\in X$
+  $\sup_{i \in I}\|A_i(x)\|<\infty$, entonces $\sup_{i \in I}\|A_i\|<\infty$.
 \end{theorem}
 
-\begin{proof}
-  
+\begin{proof}(p.265-266, \cite{cascales2012})
+
+  Considero los conjuntos
+  \[
+  D=\{x\in X: \sup_{i \in I} \|A_i(x)\|=\infty\} 
+  ,\]
+  \[
+  D_n=\bigcup_{i \in I}\{x\in X: \|A_i(x)\|>n\} 
+  .\]
+
+  Los $D_n$ son abiertos porque cada $A_i$ y la norma son continuas, y
+  $D=\bigcap_{n\in \mathbb{N}}D_n$. Por hipótesis $D=\emptyset$, y si cada
+  $D_n$ fuese denso $D$ también lo sería (\autoref{th:baire}, pues $X$ es
+  Banach), así que algún $D_n$ no es denso, y $\exists m\in \mathbb{N}$ con
+  $Int(D_m^c)\neq \emptyset$. Considero $x\in Int(D_m^c)$, y $r>0$ con
+  $B(x,r)\subset D_m^c$, de forma que $\forall y\in B(x,r)$ se tiene
+  $\|A_iy\|\le m$. Considero además $C=\sup_{i \in I}\|A_ix\|<\infty$. Se puede
+  comprobar entonces, para $y\in B(0,r)$:
+
+  \[
+  \|A_iy\|=\|(A_iy - A_ix) +A_i x\|\le 
+  \|A_i(x-y)\|+ \|A_ix\|\le 
+  m + C
+  ,\] 
+
+  y por lo tanto $\forall y\in B[0,1],i \in I$ se da $\|A_iy\|\le 2r(m+C)$, con
+  lo que $\sup_{i \in I}\|A_i\|<\infty$.
+
 \end{proof}
