@@ -93,14 +93,23 @@ ejercicio comprobar las afirmaciones.
   intervalo de los posibles valores $\tilde{f}(x_0)$ es no vacío. Definimos
   entonces $\tilde{f}(x_0)$ en ese intervalo. queda solo ver que
   $\tilde{f}(y+\alpha x_0)\le p(y+\alpha x_0)$ $\forall y\in  Y, \alpha\in
-  \mathbb{R}$. Basta trabajar por casos en el signo de $\alpha$.
+  \mathbb{R}$. Basta trabajar por casos en el signo de $\alpha$: por ejemplo, si
+  $\alpha\ge 0$:
+
+  \[
+  \tilde{f}(y+\alpha x_0)=
+  f(y)+\alpha \tilde{f}(x_0)\le
+  f(y) + \alpha\left( -f\left( \frac{y}{\alpha} \right)+p\left( \frac{y}{\alpha} +x_0\right) \right)=
+  \alpha p\left( \frac{y}{\alpha} +x_0\right)=
+  p(y+\alpha x_0)
+  .\] 
 \end{proof}
 
-\begin{corollary}
-  Si $p$ es una seminorma (subaditiva y $p(\lambda x)=|\lambda|p(x)$), si
+\begin{remark}
+  Si $p$ es una seminorma (subaditiva y $p(\lambda x)=|\lambda|p(x)$) y
   $|f(x)|\le p(x)$ $\forall x\in Y$, entonces $|\tilde{f}(x)|\le p(x)$ $\forall
   x\in X$.
-\end{corollary}
+\end{remark}
 
 \begin{remark}
   Si $p$ es una norma, esa condición se traduce en la acotación, y por lo tanto
@@ -115,9 +124,10 @@ ejercicio comprobar las afirmaciones.
 \end{theorem}
 
 \begin{proof}
-  Si $Y_0:=Y,f_0=f$, defino $Y_n:=Y_{n-1}\oplus span \{x_n\}$, entonces para cada
-  $n\in \mathbb{N}$ se puede extender $f_{n-1}$ a $f_n:Y_n\to \mathbb{R}$ tal
-  que $|f_n(x)|\le \|f_{n-1}\|\|x\|=\ldots=\|f\|\|x\|$.
+  Si $Y_0:=Y,f_0=f$, defino $Y_n:=Y_{n-1}\oplus span \{x_n\}$ (si $x_n \in
+  Y_{n-1}$ no hace falta extender, se tiene todo trivialmente), entonces para
+  cada $n\in \mathbb{N}$ se puede extender $f_{n-1}$ a $f_n:Y_n\to \mathbb{R}$
+  tal que $|f_n(x)|\le \|f_{n-1}\|\|x\|=\ldots=\|f\|\|x\|$.
 
   Defino entonces
 
@@ -125,9 +135,11 @@ ejercicio comprobar las afirmaciones.
     \tilde{f}: Z:=\cup_{n=1}^\infty Y_n &\longrightarrow \mathbb{R} \\
     z &\longmapsto \tilde{f}(z) = f_n(z) \text{ si } z\in Y_n
   ,\end{align*}
-  es fácil ver que está bien definida, y que $|\tilde{f}(z)|\le \|f\|\|x\|$
-  $\forall z\in Z$. Pero además es lineal, así que es uniformemente continua y
-  se puede extender a la clausura de $Z$ que es $X$.
+  está bien definida porque los $Y_n$ son crecientes, y al extender no
+  modificamos el valor en los $Y_n$ anteriores. Se tiene además que
+  $|\tilde{f}(z)|\le \|f\|\|x\|$ $\forall z\in Z$. Pero además es lineal, así
+  que es uniformemente continua y se puede extender a la clausura de $Z$ que es
+  $X$.
 \end{proof}
 
 Trabajamos ahora en un espacio vectorial $E$ general.
