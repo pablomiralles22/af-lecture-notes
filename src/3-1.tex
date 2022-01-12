@@ -175,14 +175,15 @@ Trabajamos ahora en un espacio vectorial $E$ general.
   H=\emptyset$ y $M\subset H$.
 \end{theorem}
 
-\begin{proof}
+\begin{proof} (Proposición 3.7.5., \cite{cascales2012}).
+
   $M=x_0+F$ con $F\subset E$ subespacio vectorial. Podemos suponer sin pérdida
   de generalidad que $0\in A$, pues se puede trasladar el problema. Como $A$ es
   abierto, $A$ es absorbente, y se comprueba además que $A=\{x\in E:P_A(x)<1\}
   $, y aplicando que $A\cap M=\emptyset$ $P_A(x_0+y)\ge  1, \forall y\in F$.
   Defino 
   \begin{align*}
-    u: F\oplus span \{x_0\}  &\longrightarrow \to \mathbb{R} \\
+    u: F\oplus span \{x_0\}  &\longrightarrow \mathbb{R} \\
     (y,\lambda x_0) &\longmapsto u((y,\lambda x_0)) = \lambda
   .\end{align*}
   
@@ -198,7 +199,10 @@ Trabajamos ahora en un espacio vectorial $E$ general.
   Aplicando a $u$ la forma analítica de Hahn-Banach, $u$ se extiende a
   $\tilde{u}:E\to \mathbb{R}$ tal que $\tilde{u}(x)\le P_A(x)$ para cada $x\in
   E$. Al ser $A$ un abierto, esa última desigualdad implica que $\tilde{u}$ es
-  continua (comprobar el límite en $0$), y definiendo
+  continua\footnote{En clase el profesor dijo: ``comprobar el límite en 0'', pero en
+    el caso general se ve no trivialmente en el libro.}, en el caso de un
+  Banach es sencillo: $\exists r>0$ con $B=B(0,r)\subset A$, $P_A(x)\le
+  P_B(x)=\|x\|/r$). Definiendo
 
   \[
   H=\{x\in E: \tilde{u}(x)=1\}
@@ -219,9 +223,9 @@ Trabajamos ahora en un espacio vectorial $E$ general.
 \begin{proof}
   $A-B$ (diferencia algebraica, no de conjuntos) es convexo, abierto, no vacío y
   $0\not\in A-B$, por Mazur $\exists f:E\to \mathbb{R}$ lineal y continua con
-  $0\in H=\{x\in E:f(x)=0\} $ y $H\cap (A-B)$, de donde $f(A-B)$ será conexo en
-  $\mathbb{R}$, es decir, un intervalo, con $0\not\in f(A-B)$, luego $f$ separa
-  estrictamente $A$ y $B$.
+  $0\in H=\{x\in E:f(x)=0\} $ y $H\cap (A-B)=\emptyset$, de donde $f(A-B)$ será
+  conexo en $\mathbb{R}$, es decir, un intervalo, con $0\not\in f(A-B)$, luego
+  $f$ separa estrictamente $A$ y $B$.
 \end{proof}
 
 \begin{definition}
@@ -268,6 +272,6 @@ Trabajamos ahora en un espacio vectorial $E$ general.
 \end{proof}
 
 \begin{remark}
-  En clase no copié las hipótesis sobre el espacio (si era de Banach o e.v.t.),
-  pero debería aceptarlo con espacio de Banach.
+  En clase no copié las hipótesis sobre el espacio del último teorema (si era de
+  Banach o e.v.t.), pero debería aceptarlo con espacio de Banach.
 \end{remark}
